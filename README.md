@@ -4,7 +4,7 @@ under development.
 
 1) [Install VVV](https://varyingvagrantvagrants.org/docs/en-US/installation/)
 
-2) To be able to clone the private repositories:
+2) [Optional] To be able to clone private repositories:
 	- [Add a new SSH key](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/) to your GitHub account.
 	- Set up SSH forwarding by [adding your SSH key to the ssh-agent](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#adding-your-ssh-key-to-the-ssh-agent)
 
@@ -13,7 +13,7 @@ under development.
 	```yml
 	sites:
 	  wpstarter:
-	    repo: https://github.com/soderlind/wpstarter-vvv
+	    repo: https://github.com/soderlind/wpstarter-config
 	    nginx_upstream: php73
 	    hosts:
 	      - wpstarter.local
