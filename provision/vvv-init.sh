@@ -22,7 +22,7 @@ if [[ ! -d "${VVV_PATH_TO_SITE}/wpstarter" ]]; then
 	sed -i "s#site_name_here#${DOMAIN}#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
 	sed -i "s#db_name_here#${DB_NAME}#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
 	sed -i "s#db_username_here#wp#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
-	sed -i "s#db_password_here#wp#" "${VVV_PATH_TO_SITE}/v.env-sample"
+	sed -i "s#db_password_here#wp#" "${VVV_PATH_TO_SITE}/.env-sample"
 	sed -i "s#acf_pro_key_here#${ACF_PRO_KEY}#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
 
 	noroot mv "${VVV_PATH_TO_SITE}/wpstarter/.env-sample" "${VVV_PATH_TO_SITE}/v.env"
