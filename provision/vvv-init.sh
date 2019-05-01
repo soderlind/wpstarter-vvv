@@ -46,7 +46,7 @@ touch ${VVV_PATH_TO_SITE}/log/access.log
 
 # Composer
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts ssh -Ts git@github.com
-cd ${VVV_PATH_TO_SITE}/wpstarter/public
+cd ${VVV_PATH_TO_SITE}/wpstarter
 if [[ ! -d "${VVV_PATH_TO_SITE}/wpstarter/vendor" ]]; then
 	echo "Running composer install"
 	noroot composer install
