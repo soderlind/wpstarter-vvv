@@ -13,10 +13,10 @@ under development.
 	```yml
 	sites:
 	  wpstarter:
-	    repo: https://github.com/soderlind/wpstarter-config
+	    repo: https://github.com/soderlind/wpstarter-vvv
 	    nginx_upstream: php73
 	    hosts:
-	      - wpstarter.local
+	      - wpstarter.test
 	    custom:
 	      wp_type: subdirectory
 	      wp_version: latest
