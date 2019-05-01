@@ -25,7 +25,7 @@ if [[ ! -d "${VVV_PATH_TO_SITE}/wpstarter" ]]; then
 	sed -i "s#db_password_here#wp#" "${VVV_PATH_TO_SITE}/.env-sample"
 	sed -i "s#acf_pro_key_here#${ACF_PRO_KEY}#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
 
-	noroot mv "${VVV_PATH_TO_SITE}/wpstarter/.env-sample" "${VVV_PATH_TO_SITE}/v.env"
+	noroot mv "${VVV_PATH_TO_SITE}/wpstarter/.env-sample" "${VVV_PATH_TO_SITE}/vwpstarter/.env"
 else
 	cd ${VVV_PATH_TO_SITE}
 	noroot git pull
