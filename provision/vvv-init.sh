@@ -13,19 +13,19 @@ ACF_PRO_KEY=`get_config_value 'acf_pro_key' "xyz"`
 
 
 # Clone the WP Starter config repo
-if [[ ! -f "${VVV_PATH_TO_SITE}/wpstarter.json" ]]; then
+if [[ ! -d "${VVV_PATH_TO_SITE}/wpstarter" ]]; then
     echo "Cloning WP Starter config..."
-	noroot git clone https://github.com/soderlind/wpstarter-config "${VVV_PATH_TO_SITE}/"
+	noroot git clone https://github.com/soderlind/wpstarter-config "${VVV_PATH_TO_SITE}/wpstarter"
 
 	echo "Configure .env"
 
-	sed -i "s#site_name_here#${DOMAIN}#" "${VVV_PATH_TO_SITE}/.env-sample"
-	sed -i "s#db_name_here#${DB_NAME}#" "${VVV_PATH_TO_SITE}/.env-sample"
-	sed -i "s#db_username_here#wp#" "${VVV_PATH_TO_SITE}/.env-sample"
-	sed -i "s#db_password_here#wp#" "${VVV_PATH_TO_SITE}/.env-sample"
-	sed -i "s#acf_pro_key_here#${ACF_PRO_KEY}#" "${VVV_PATH_TO_SITE}/.env-sample"
+	sed -i "s#site_name_here#${DOMAIN}#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
+	sed -i "s#db_name_here#${DB_NAME}#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
+	sed -i "s#db_username_here#wp#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
+	sed -i "s#db_password_here#wp#" "${VVV_PATH_TO_SITE}/v.env-sample"
+	sed -i "s#acf_pro_key_here#${ACF_PRO_KEY}#" "${VVV_PATH_TO_SITE}/wpstarter/.env-sample"
 
-	noroot mv "${VVV_PATH_TO_SITE}/.env-sample" "${VVV_PATH_TO_SITE}/.env"
+	noroot mv "${VVV_PATH_TO_SITE}/wpstarter/.env-sample" "${VVV_PATH_TO_SITE}/v.env"
 else
 	cd ${VVV_PATH_TO_SITE}
 	noroot git pull
@@ -46,8 +46,8 @@ touch ${VVV_PATH_TO_SITE}/log/access.log
 
 # Composer
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts ssh -Ts git@github.com
-cd ${VVV_PATH_TO_SITE}/public
-if [[ ! -d "${VVV_PATH_TO_SITE}/vendor" ]]; then
+cd ${VVV_PATH_TO_SITE}/wpstarter/public
+if [[ ! -d "${VVV_PATH_TO_SITE}/wpstarter/vendor" ]]; then
 	echo "Running composer install"
 	noroot composer install
 else
@@ -60,7 +60,6 @@ fi
 #
 
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
-#sed -i "s#{{DOMAINS_HERE}}#${DOMAINS}#" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
 
 if [ -n "$(type -t is_utility_installed)" ] && [ "$(type -t is_utility_installed)" = function ] && `is_utility_installed core tls-ca`; then
     sed -i "s#{{TLS_CERT}}#ssl_certificate /vagrant/certificates/${VVV_SITE_NAME}/dev.crt;#" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"

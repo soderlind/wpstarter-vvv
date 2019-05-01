@@ -1,8 +1,8 @@
 server {
     listen       80;
     listen       443 ssl http2;
-    server_name  {{DOMAINS_HERE}};
-    root         {vvv_path_to_site}/public;
+    server_name  {vvv_hosts};
+    root         {vvv_path_to_site}/wpstarter/public;
 
     # Nginx logs
     error_log    {vvv_path_to_site}/log/nginx-error.log;
